@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>数字玫瑰花</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Rose</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">关于</a>
+            </li>
+            <li class="nav-item">
+            	<div class="content_show" style="display: none;">
+            		<a class="nav-link js-scroll-trigger" href="#package">礼包</a>
+            	</div> 
+            </li>
+            <li class="nav-item">
+            	<div class="content_show" style="display: none;">
+            		<a class="nav-link js-scroll-trigger" href="#game">游戏</a>
+            	</div>
+            </li>
+            <li class="nav-item">
+            	<div class="content_show" style="display: none;">
+					<a class="nav-link js-scroll-trigger" href="#send">赠送</a>
+            	</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">数字玫瑰花</h1>
+              <p class="intro-text">基于星云链的首款可领养、种植、赠送数字玫瑰花的游戏。</p>
+              <a href="#about" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="content-section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>什么是 数字玫瑰花?</h2>
+
+			<p>
+				数字玫瑰花是一款基于星云链的种植游戏，玩家可以购买玫瑰种子，通过浇水、写心情为心爱之人栽培玫瑰花朵，每位玩家只可以拥有一株玫瑰花，寓意是“唯一真爱”。
+				每朵玫瑰花种子至少需要浇水3次才能生长成玫瑰花。当玫瑰花长成后，玩家可以通过抽奖的方式获取升级玫瑰花为珍稀品种的机会。
+				玫瑰花不可被交易，仅可作为爱情鉴证被赠予，同时培育玫瑰时写下的心情均会被永远记录在区块链上，成为永远的回忆。让我们用这种独特的方式和精力去记录我们的爱吧！
+			</p>
+			<p>
+				本游戏主要为所爱之人培育可在星云链上永久保存的爱情鉴证，同时也可在星云链上永久记录值得纪念的重要时刻。
+				</br>此游戏提供玫瑰花的赠予功能。
+			</p>
+
+			<p>
+                    <div class="noExtensionClass" style="display:none" id="noExtension">
+                    请安装 
+                    <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> 
+                    激活Dapp的功能。
+                    </div>  
+                </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Package Section --> 
+    <section id="package" class="content-section"> 
+
+    	<div class="content_show" style="display: none;">
+    		
+		<div class="container">
+        <div class="col-lg-8 mx-auto">
+
+        	<h2 align="center">数字玫瑰礼包</h2>
+          
+			<p align="center">你可以从数字玫瑰礼包中获取玫瑰种子一颗。</p>
+			<label for="exampleInputEmail1" >姓名</label>
+             <input type="text" class="form-control" id="name" />
+            </br>
+             <label for="exampleInputEmail1" >手机号码</label>
+             <input type="text" class="form-control" id="phoneNum" />
+			</br>
+            <div align="center">
+            <button class="btn btn-default btn-block btn-lg" id="setRegister">注册</button>
+            </div>
+			</br>
+            <div align="center">
+            <!-- <button class="btn btn-default btn-lg" >注册</button> -->
+            	<button class="btn btn-default btn-block btn-lg" id="setPlant">领取种子</button>
+            </div>
+            <br>
+           <div>注册后输入手机号码即可领取种子</div>
+        </div>
+      </div> 
+
+    	</div>
+    </section>
+
+    <!-- Game Section --> 
+    <section id="game" class="content-section" >
+		<div class="content_show" style="display: none;">
+
+		      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 align="center">游戏</h2>
+            <p >输入手机号码获取玩家种植情况</p>
+
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<input type="text" class="form-control" id="game_phoneNum" placeholder="手机号码" />
+					<br>
+					<p class="playerExistClass" id="playerExist" style="display: none;">该玩家不存在</p>
+				</div>
+				<div class="col-md-4 column" align="center"> 
+            		<button class="btn btn-default btn-lg" id="getInfo">搜索</button>
+				</div>
+
+			</div>
+
+		</br>
+		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<p id="game_get_content">
+					</p>
+				</div>
+				<div class="col-md-4 column" align="center">
+					<img alt="225x225" src="./img/black.png" id="game_img" /> 
+				</div>
+				
+			</div>
+		</div>
+
+
+			</br>
+				<div class="row clearfix">
+				<div class="col-md-8 column">
+					<input type="text" class="form-control" placeholder="记录时刻" id="game_content" />
+				</div>
+				<div class="col-md-4 column" align="center"> 
+            		<button class="btn btn-default btn-lg" id="setWater">浇水</button>
+				</div>
+			</div>
+
+
+          </div>
+        </div>
+      </div>
+
+		</div>
+    </section>
+
+
+	<!-- Send Section -->
+	<section id="send" class="content-section">
+		<div class="content_show" style="display: none;">
+
+			<div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 align="center">赠送</h2>
+
+				<div  align="center"> 
+				<img src="./img/package.png" width="512" height="256" >
+            		<button class="btn btn-default btn-lg" id="setPrecious">抽取珍贵玫瑰</button>
+				</div>
+				
+			</br></br></br>
+				<div class="row clearfix">
+				<div class="col-md-8 column">
+					<input type="text" class="form-control" id="receiverPhoneNum" placeholder="接受玩家手机号码" />
+				</div>
+				<div class="col-md-4 column" align="center"> 
+            		<button class="btn btn-default btn-lg" id="setSend">赠送</button>
+				</div>
+          </div>
+        </div>
+      </div>
+
+		</div>
+	</section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <!-- <p>Copyright &copy; Your Website 2018</p> -->
+        <a href="">
+        <img src="./img/logo_white.png" width="180" height="60">
+        </a>
+      <div>基于星云链的数字玫瑰花游戏</div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script> -->
+
+    <!-- Custom scripts for this template -->
+    <!-- <script src="js/grayscale.min.js"></script> -->
+
+	<script src=nebPay-master/dist/nebulas.js></script>
+	<script src=nebPay-master/dist/nebPay.js></script>
+
+	<!-- 判断是否安装钱包 -->
+	<script type="text/javascript">
+		if (typeof(webExtensionWallet) == 'undefined') {
+			$(".noExtensionClass").show();
+		} else {
+			$(".content_show").show();
+		}
+    </script>
+
+	<script>
+	"use strict";
+    var dappAddress =  "n1y4xt6RUWyfEdrQJPQrnRqrgmnHrssoS7T";   //主网
+	// var dappAddress = "n1xXscy5wLajtWZKQTuWB7JD93dHdnPPamC";
+	 var nebulas = require("nebulas"),
+        Account = nebulas.Account,
+        neb = new nebulas.Neb();
+        
+    neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+    // neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+
+    $("#getInfo").click(function() {
+
+    	//首先清空 game 中的 p 标签内所有元素
+    	$("#game_get_content").empty();
+    	document.getElementById('game_img').src = "./img/black.png";
+    	$(".playerExistClass").hide();
+
+    	var from = Account.NewAccount().getAddressString();
+    	var value = "0";
+    	var nonce = "0";
+    	var gas_price = "1000000";
+    	var gas_limit = "2000000";
+    	var callFunction = "get";
+    	var key = document.getElementById('game_phoneNum').value;
+ 		var callArgs = "[\"" + key +"\"]";
+ 		var contract = {
+ 			"function": callFunction,
+ 			"args": callArgs,
+ 		}
+
+ 		neb.api.call(from,dappAddress,value,nonce,gas_price,gas_limit,contract).then(function(resp){
+ 			cbSearch(resp);
+ 		}).catch(function(err){
+ 			console.log("error: " + err.message);
+ 		})
+    })
+
+    //return of search
+    function cbSearch(resp) {
+        var result = resp.result;
+        console.log("result = " + result);
+
+        var obj = JSON.parse(result);
+        if (result == 'null') {
+        	document.getElementById('playerExist').innerHTML = "该玩家不存在"
+        	$(".playerExistClass").show();
+        	return;
+        }
+
+        //处理图片
+        if (obj.isPlantingFlag == 'false') {
+
+        	document.getElementById('playerExist').innerHTML = "该玩家尚未领养玫瑰花"
+        	$(".playerExistClass").show();
+        	document.getElementById('game_img').src = "./img/black.png";
+        } else if (obj.waterNum <= 3) { 
+        	document.getElementById('game_img').src = "./img/seed.png";
+        } else {
+        	if (obj.isPreciousFlag == 'true') {
+        		document.getElementById('game_img').src = "./img/precious_rose.png";
+        	} else {
+        		document.getElementById('game_img').src = "./img/normal_rose.png";
+        	}
+        }
+
+        //处理文本
+        // game_get_content
+        var content = obj.content;
+        var contentArray = content.split('-.-.-');
+        for (var i = 0; i < contentArray.length; i++) {
+        	if (i != 0) {
+        		console.log('contentArray[i] = '+ contentArray[i]);
+        		//在便签中创建新的标签
+        		var p = document.getElementById('game_get_content')
+        		var pChild = document.createElement("p");     //创建一个p元素 
+
+                pChild.innerHTML = contentArray[i];
+       			// pChild.innerHTML = contentArray[i] + "---" + obj.ownerName  ;
+        		p.appendChild(pChild);
+        	}
+        }
+    }
+
+
+    //NebPay
+    var NebPay = require("nebpay");
+    var nebPay = new NebPay();    
+    var serialNumber; //交易序列号
+    var intervalQuery; //定时查询交易结果
+
+    //注册
+    $("#setRegister").click(function() {
+    	var to = dappAddress;   //Dapp的合约地址
+        var value = "0";
+        var callFunction = "set" //调用的函数名称
+        var key = document.getElementById('phoneNum').value;
+        var content = document.getElementById('name').value;
+        var callArgs =  "[\"" + key + "\",\"" + content + "\"]";  //参数格式为参数数组的JSON字符串
+
+        var options = {
+        	//callback 是交易查询服务器地址,
+        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
+        	// callback: NebPay.config.testnetUrl    //在测试网查询
+        }
+
+        //发送交易(发起智能合约调用)
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
+
+        //设置定时查询交易结果
+        intervalQuery = setInterval(function() {
+        	funcIntervalQuery();
+        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+    })
+
+    //领取种子
+    $("#setPlant").click(function() {
+    	var to = dappAddress;   //Dapp的合约地址
+        var value = "0";
+        var callFunction = "setPlant" //调用的函数名称
+        var key = document.getElementById('phoneNum').value;
+        var content = Date.parse(new Date());
+        var callArgs =  "[\"" + key + "\",\"" + content + "\"]";  //参数格式为参数数组的JSON字符串
+
+        var options = {
+        	//callback 是交易查询服务器地址,
+        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
+        	// callback: NebPay.config.testnetUrl    //在测试网查询
+        }
+
+        //发送交易(发起智能合约调用)
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
+
+        //设置定时查询交易结果
+        intervalQuery = setInterval(function() {
+        	funcIntervalQuery();
+        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+    })
+
+    //浇水
+    $("#setWater").click(function() {
+
+    	var to = dappAddress;   //Dapp的合约地址
+        var value = "0";
+        var callFunction = "setWater" //调用的函数名称
+        var key = document.getElementById('game_phoneNum').value;
+        var content = document.getElementById('game_content').value;
+        var waterTime = Date.parse(new Date());
+        var callArgs =  "[\"" + key +"\",\"" + content + "\",\""+ waterTime + "\"]";  //参数格式为参数数组的JSON字符串
+
+        var options = {
+        	//callback 是交易查询服务器地址,
+        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
+        	// callback: NebPay.config.testnetUrl    //在测试网查询
+        }
+
+        //发送交易(发起智能合约调用)
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
+
+        //设置定时查询交易结果
+        intervalQuery = setInterval(function() {
+        	funcIntervalQuery();
+        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+
+    })
+
+
+    //抽珍贵玫瑰
+    $("#setPrecious").click(function(){
+    	var to = dappAddress;
+    	var value = "0";
+    	var callFunction = "setPrecious";
+    	var key = document.getElementById('game_phoneNum').value;
+    	var callArgs = "[\"" + key + "\"]";
+    	var options = {
+    		callback: NebPay.config.mainnetUrl	//在主网查询(默认值)
+    		// callback:NebPay.config.testnetUrl	//在测试网查询
+    	}
+
+    	//发起交易(发起智能合约调用)
+    	serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
+
+    	//设置定时查询交易结果
+    	intervalQuery = setInterval(function() {
+    		funcIntervalQuery();
+    	},10000);
+    })
+
+    //赠送功能
+    $("#setSend").click(function() {
+    	var to = dappAddress;
+    	var value = "0";
+    	var callFunction = "setSend";
+    	var key = document.getElementById('game_phoneNum').value;
+    	var receiverKey = document.getElementById('receiverPhoneNum').value;
+    	var callArgs = "[\"" + key + "\",\"" + receiverKey +"\"]";
+    	var options = {
+    		callback: NebPay.config.mainnetUrl //在主网查询(默认值)
+    		// callback: NebPay.config.testnetUrl
+    	}
+    	serialNumber = nebPay.call(to, value, callFunction,callArgs,options);
+
+    	//设置定时查询交易结果
+    	intervalQuery = setInterval(function() {
+    		funcIntervalQuery();
+    	},10000);
+    })
+
+
+    //查询交易结果。queryPayInfo 返回的是一个 Promise 对象
+    function funcIntervalQuery() {
+
+    	var options = {
+    		//callback 是交易查询服务器地址,
+    		callback: NebPay.config.mainnetUrl  //在主网查询(默认值)
+    		// callback: NebPay.config.testnetUrl     //在测试网查询
+    	}
+
+    	//queryPayInfo的options参数用来指定查询交易的服务器地址,(如果是主网可以忽略,因为默认服务器是在主网查询)
+    	nebPay.queryPayInfo(serialNumber, options)	//search transaction result from server (result upload to server by app)
+    		.then(function(resp) {
+    			console.log("tx result: " + resp)
+    			var respObject = JSON.parse(resp)
+    			//code==0 交易发送成功,status==交易已被打包上链
+    			if (respObject.code === 0 && respObject.data.status === 1) {
+    				//交易成功,处理后续任务...
+    				console.log("交易成功,处理后续任务...");
+    				clearInterval(intervalQuery)	//清除定时查询
+    			}
+    		})
+    		.catch(function(err) {
+    			console.log(err);
+    		})
+    }
+
+		
+	</script>
+
+
+
+  </body>
+
+</html>
