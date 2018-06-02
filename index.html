@@ -39,19 +39,19 @@
               <a class="nav-link js-scroll-trigger" href="#about">关于</a>
             </li>
             <li class="nav-item">
-            	<div class="content_show" style="display: none;">
+            	<!-- <div class="content_show" style="display: none;"> -->
             		<a class="nav-link js-scroll-trigger" href="#package">礼包</a>
-            	</div> 
+            	<!-- </div>  -->
             </li>
             <li class="nav-item">
-            	<div class="content_show" style="display: none;">
+            	<!-- <div class="content_show" style="display: none;"> -->
             		<a class="nav-link js-scroll-trigger" href="#game">游戏</a>
-            	</div>
+            	<!-- </div> -->
             </li>
             <li class="nav-item">
-            	<div class="content_show" style="display: none;">
+            	<!-- <div class="content_show" style="display: none;"> -->
 					<a class="nav-link js-scroll-trigger" href="#send">赠送</a>
-            	</div>
+            	<!-- </div> -->
             </li>
           </ul>
         </div>
@@ -92,13 +92,19 @@
 				</br>此游戏提供玫瑰花的赠予功能。
 			</p>
 
-			<p>
+            <div class="noExtensionClass"  id="noExtension">
+                使用前请安装 
+                <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> 
+                激活Dapp的功能。移动端请安装<a target="_blank" href="https://nano.nebulas.io/index_cn.html">NAS nano 钱包</a>
+          </div> 
+
+			<!-- <p>
                     <div class="noExtensionClass" style="display:none" id="noExtension">
                     请安装 
                     <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> 
                     激活Dapp的功能。
                     </div>  
-                </p>
+                </p> -->
 
           </div>
         </div>
@@ -108,7 +114,8 @@
     <!-- Package Section --> 
     <section id="package" class="content-section"> 
 
-    	<div class="content_show" style="display: none;">
+        <div class="content_show">
+    	<!-- <div class="content_show" style="display: none;"> -->
     		
 		<div class="container">
         <div class="col-lg-8 mx-auto">
@@ -140,7 +147,9 @@
 
     <!-- Game Section --> 
     <section id="game" class="content-section" >
-		<div class="content_show" style="display: none;">
+
+        <div class="content_show">
+		<!-- <div class="content_show" style="display: none;"> -->
 
 		      <div class="container">
         <div class="row">
@@ -152,7 +161,8 @@
 				<div class="col-md-8 column">
 					<input type="text" class="form-control" id="game_phoneNum" placeholder="手机号码" />
 					<br>
-					<p class="playerExistClass" id="playerExist" style="display: none;">该玩家不存在</p>
+                    <p class="playerExistClass" id="playerExist">该玩家不存在</p>
+					<!-- <p class="playerExistClass" id="playerExist" style="display: none;">该玩家不存在</p> -->
 				</div>
 				<div class="col-md-4 column" align="center"> 
             		<button class="btn btn-default btn-lg" id="getInfo">搜索</button>
@@ -196,7 +206,8 @@
 
 	<!-- Send Section -->
 	<section id="send" class="content-section">
-		<div class="content_show" style="display: none;">
+    <div class="content_show" >
+		<!-- <div class="content_show" style="display: none;"> -->
 
 			<div class="container">
         <div class="row">
@@ -272,6 +283,7 @@
         
     neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
     // neb.setRequest(new nebulas.HttpRequest("https://testnet.nebulas.io"));
+    var nasApi = neb.api;
 
     $("#getInfo").click(function() {
 
@@ -362,19 +374,29 @@
         var content = document.getElementById('name').value;
         var callArgs =  "[\"" + key + "\",\"" + content + "\"]";  //参数格式为参数数组的JSON字符串
 
-        var options = {
-        	//callback 是交易查询服务器地址,
-        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
-        	// callback: NebPay.config.testnetUrl    //在测试网查询
-        }
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {
+          qrcode: {
+              showQRCode: true
+          },
+          callback: NebPay.config.mainnetUrl, //在主网查询(默认值)
+          // callback: NebPay.config.testnetUrl,    //在测试网查询
+          listener: listenerRegister  //set listener for extension transaction result
+      });
 
-        //发送交易(发起智能合约调用)
-        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
 
-        //设置定时查询交易结果
-        intervalQuery = setInterval(function() {
-        	funcIntervalQuery();
-        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+        // var options = {
+        // 	//callback 是交易查询服务器地址,
+        // 	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
+        // 	// callback: NebPay.config.testnetUrl    //在测试网查询
+        // }
+
+        // //发送交易(发起智能合约调用)
+        // serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
+
+        // //设置定时查询交易结果
+        // intervalQuery = setInterval(function() {
+        // 	funcIntervalQuery();
+        // },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
     })
 
     //领取种子
@@ -386,19 +408,14 @@
         var content = Date.parse(new Date());
         var callArgs =  "[\"" + key + "\",\"" + content + "\"]";  //参数格式为参数数组的JSON字符串
 
-        var options = {
-        	//callback 是交易查询服务器地址,
-        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
-        	// callback: NebPay.config.testnetUrl    //在测试网查询
-        }
-
-        //发送交易(发起智能合约调用)
-        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
-
-        //设置定时查询交易结果
-        intervalQuery = setInterval(function() {
-        	funcIntervalQuery();
-        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {
+          qrcode: {
+              showQRCode: true
+          },
+          callback: NebPay.config.mainnetUrl, //在主网查询(默认值)
+          // callback: NebPay.config.testnetUrl,    //在测试网查询
+          listener: listenerPlant  //set listener for extension transaction result
+      });
     })
 
     //浇水
@@ -412,20 +429,14 @@
         var waterTime = Date.parse(new Date());
         var callArgs =  "[\"" + key +"\",\"" + content + "\",\""+ waterTime + "\"]";  //参数格式为参数数组的JSON字符串
 
-        var options = {
-        	//callback 是交易查询服务器地址,
-        	callback: NebPay.config.mainnetUrl //在主网查询(默认值)
-        	// callback: NebPay.config.testnetUrl    //在测试网查询
-        }
-
-        //发送交易(发起智能合约调用)
-        serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
-
-        //设置定时查询交易结果
-        intervalQuery = setInterval(function() {
-        	funcIntervalQuery();
-        },10000);	//建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
-
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {
+          qrcode: {
+              showQRCode: true
+          },
+          callback: NebPay.config.mainnetUrl, //在主网查询(默认值)
+          // callback: NebPay.config.testnetUrl,    //在测试网查询
+          listener: listenerWater  //set listener for extension transaction result
+      });
     })
 
 
@@ -436,18 +447,15 @@
     	var callFunction = "setPrecious";
     	var key = document.getElementById('game_phoneNum').value;
     	var callArgs = "[\"" + key + "\"]";
-    	var options = {
-    		callback: NebPay.config.mainnetUrl	//在主网查询(默认值)
-    		// callback:NebPay.config.testnetUrl	//在测试网查询
-    	}
 
-    	//发起交易(发起智能合约调用)
-    	serialNumber = nebPay.call(to, value, callFunction, callArgs, options);
-
-    	//设置定时查询交易结果
-    	intervalQuery = setInterval(function() {
-    		funcIntervalQuery();
-    	},10000);
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {
+          qrcode: {
+              showQRCode: true
+          },
+          callback: NebPay.config.mainnetUrl, //在主网查询(默认值)
+          // callback: NebPay.config.testnetUrl,    //在测试网查询
+          listener: listenerPrecious  //set listener for extension transaction result
+      });
     })
 
     //赠送功能
@@ -458,44 +466,163 @@
     	var key = document.getElementById('game_phoneNum').value;
     	var receiverKey = document.getElementById('receiverPhoneNum').value;
     	var callArgs = "[\"" + key + "\",\"" + receiverKey +"\"]";
-    	var options = {
-    		callback: NebPay.config.mainnetUrl //在主网查询(默认值)
-    		// callback: NebPay.config.testnetUrl
-    	}
-    	serialNumber = nebPay.call(to, value, callFunction,callArgs,options);
 
-    	//设置定时查询交易结果
-    	intervalQuery = setInterval(function() {
-    		funcIntervalQuery();
-    	},10000);
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {
+          qrcode: {
+              showQRCode: true
+          },
+          callback: NebPay.config.mainnetUrl, //在主网查询(默认值)
+          // callback: NebPay.config.testnetUrl,    //在测试网查询
+          listener: listenerSend  //set listener for extension transaction result
+      });
     })
+
+    function listenerRegister(resp) {
+        console.log("listener resp: " + JSON.stringify(resp))
+        var result = resp;
+        onrefreshRegister(result["txhash"])
+    }
+
+    function onrefreshRegister(txhash) {
+      nasApi.getTransactionReceipt({hash: txhash}).then(function(receipt) {
+            console.log("status = " + receipt.status);
+            if (receipt.status == 1) {
+            console.log("交易成功,处理后续任务...");
+              clearInterval(intervalQuery)  //清除定时查询
+              alert("注册成功");
+            } else if (receipt.status == 0) {
+                clearInterval(intervalQuery)  //清除定时查询
+                alert("失败");
+            } else {
+              intervalQuery = setTimeout(() => {
+                onrefreshRegister(txhash);
+            }, 1000);    //建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+            }
+        });
+    }
+
+    function listenerPlant(resp) {
+        console.log("listener resp: " + JSON.stringify(resp))
+        var result = resp;
+        onrefreshPlant(result["txhash"])
+    }
+
+    function onrefreshPlant(txhash) {
+      nasApi.getTransactionReceipt({hash: txhash}).then(function(receipt) {
+            console.log("status = " + receipt.status);
+            if (receipt.status == 1) {
+            console.log("交易成功,处理后续任务...");
+              clearInterval(intervalQuery)  //清除定时查询
+              alert("领取种子成功");
+            } else if (receipt.status == 0) {
+                clearInterval(intervalQuery)  //清除定时查询
+                alert("失败");
+            } else {
+              intervalQuery = setTimeout(() => {
+                onrefreshPlant(txhash);
+            }, 1000);    //建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+            }
+        });
+    }
+
+    function listenerWater(resp) {
+        console.log("listener resp: " + JSON.stringify(resp))
+        var result = resp;
+        onrefreshWater(result["txhash"])
+    }
+
+    function onrefreshWater(txhash) {
+      nasApi.getTransactionReceipt({hash: txhash}).then(function(receipt) {
+            console.log("status = " + receipt.status);
+            if (receipt.status == 1) {
+            console.log("交易成功,处理后续任务...");
+              clearInterval(intervalQuery)  //清除定时查询
+              alert("浇水成功");
+            } else if (receipt.status == 0) {
+                clearInterval(intervalQuery)  //清除定时查询
+                alert("失败");
+            } else {
+              intervalQuery = setTimeout(() => {
+                onrefreshWater(txhash);
+            }, 1000);    //建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+            }
+        });
+    }
+
+    function listenerPrecious(resp) {
+        console.log("listener resp: " + JSON.stringify(resp))
+        var result = resp;
+        onrefreshPrecious(result["txhash"])
+    }
+
+    function onrefreshPrecious(txhash) {
+      nasApi.getTransactionReceipt({hash: txhash}).then(function(receipt) {
+            console.log("status = " + receipt.status);
+            if (receipt.status == 1) {
+            console.log("交易成功,处理后续任务...");
+              clearInterval(intervalQuery)  //清除定时查询
+              alert("已抽奖，刷新查看结果吧");
+            } else if (receipt.status == 0) {
+                clearInterval(intervalQuery)  //清除定时查询
+                alert("失败");
+            } else {
+              intervalQuery = setTimeout(() => {
+                onrefreshPrecious(txhash);
+            }, 1000);    //建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+            }
+        });
+    }
+
+    function listenerSend(resp) {
+        console.log("listener resp: " + JSON.stringify(resp))
+        var result = resp;
+        onrefreshSend(result["txhash"])
+    }
+
+    function onrefreshSend(txhash) {
+      nasApi.getTransactionReceipt({hash: txhash}).then(function(receipt) {
+            console.log("status = " + receipt.status);
+            if (receipt.status == 1) {
+            console.log("交易成功,处理后续任务...");
+              clearInterval(intervalQuery)  //清除定时查询
+              alert("赠送成功");
+            } else if (receipt.status == 0) {
+                clearInterval(intervalQuery)  //清除定时查询
+                alert("失败");
+            } else {
+              intervalQuery = setTimeout(() => {
+                onrefreshSend(txhash);
+            }, 1000);    //建议查询频率10-15s,因为星云链出块时间为15s,并且查询服务器限制每分钟最多查询10次。
+            }
+        });
+    }
 
 
     //查询交易结果。queryPayInfo 返回的是一个 Promise 对象
-    function funcIntervalQuery() {
+    // function funcIntervalQuery() {
 
-    	var options = {
-    		//callback 是交易查询服务器地址,
-    		callback: NebPay.config.mainnetUrl  //在主网查询(默认值)
-    		// callback: NebPay.config.testnetUrl     //在测试网查询
-    	}
+    // 	var options = {
+    // 		//callback 是交易查询服务器地址,
+    // 		callback: NebPay.config.mainnetUrl  //在主网查询(默认值)
+    // 		// callback: NebPay.config.testnetUrl     //在测试网查询
+    // 	}
 
-    	//queryPayInfo的options参数用来指定查询交易的服务器地址,(如果是主网可以忽略,因为默认服务器是在主网查询)
-    	nebPay.queryPayInfo(serialNumber, options)	//search transaction result from server (result upload to server by app)
-    		.then(function(resp) {
-    			console.log("tx result: " + resp)
-    			var respObject = JSON.parse(resp)
-    			//code==0 交易发送成功,status==交易已被打包上链
-    			if (respObject.code === 0 && respObject.data.status === 1) {
-    				//交易成功,处理后续任务...
-    				console.log("交易成功,处理后续任务...");
-    				clearInterval(intervalQuery)	//清除定时查询
-    			}
-    		})
-    		.catch(function(err) {
-    			console.log(err);
-    		})
-    }
+    // 	//queryPayInfo的options参数用来指定查询交易的服务器地址,(如果是主网可以忽略,因为默认服务器是在主网查询)
+    // 	nebPay.queryPayInfo(serialNumber, options)	//search transaction result from server (result upload to server by app)
+    // 		.then(function(resp) {
+    // 			console.log("tx result: " + resp)
+    // 			var respObject = JSON.parse(resp)
+    // 			//code==0 交易发送成功,status==交易已被打包上链
+    // 			if (respObject.code === 0 && respObject.data.status === 1) {
+    // 				//交易成功,处理后续任务...
+    // 				console.log("交易成功,处理后续任务...");
+    // 				clearInterval(intervalQuery)	//清除定时查询
+    // 			}
+    // 		})
+    // 		.catch(function(err) {
+    // 			console.log(err);
+    // 		})
+    // }
 
 		
 	</script>
