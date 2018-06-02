@@ -481,7 +481,15 @@
     function listenerRegister(resp) {
         console.log("listener resp: " + JSON.stringify(resp))
         var result = resp;
-        onrefreshRegister(result["txhash"])
+
+        var errorCode = JSON.stringify(resp).search("Error");
+        if (errorCode == 1) {
+          alert("Error: Transaction rejected by user");
+        } else {
+          onrefreshRegister(result["txhash"])
+        }
+
+        // onrefreshRegister(result["txhash"])
     }
 
     function onrefreshRegister(txhash) {
@@ -505,7 +513,15 @@
     function listenerPlant(resp) {
         console.log("listener resp: " + JSON.stringify(resp))
         var result = resp;
-        onrefreshPlant(result["txhash"])
+
+        var errorCode = JSON.stringify(resp).search("Error");
+        if (errorCode == 1) {
+          alert("Error: Transaction rejected by user");
+        } else {
+          onrefreshPlant(result["txhash"])
+        }
+
+        // onrefreshPlant(result["txhash"])
     }
 
     function onrefreshPlant(txhash) {
@@ -529,7 +545,15 @@
     function listenerWater(resp) {
         console.log("listener resp: " + JSON.stringify(resp))
         var result = resp;
-        onrefreshWater(result["txhash"])
+
+        var errorCode = JSON.stringify(resp).search("Error");
+        if (errorCode == 1) {
+          alert("Error: Transaction rejected by user");
+        } else {
+          onrefreshWater(result["txhash"])
+        }
+
+        // onrefreshWater(result["txhash"])
     }
 
     function onrefreshWater(txhash) {
@@ -553,6 +577,14 @@
     function listenerPrecious(resp) {
         console.log("listener resp: " + JSON.stringify(resp))
         var result = resp;
+
+        var errorCode = JSON.stringify(resp).search("Error");
+        if (errorCode == 1) {
+          alert("Error: Transaction rejected by user");
+        } else {
+          onrefreshPrecious(result["txhash"]);
+        }
+
         onrefreshPrecious(result["txhash"])
     }
 
@@ -577,7 +609,15 @@
     function listenerSend(resp) {
         console.log("listener resp: " + JSON.stringify(resp))
         var result = resp;
-        onrefreshSend(result["txhash"])
+
+        var errorCode = JSON.stringify(resp).search("Error");
+        if (errorCode == 1) {
+          alert("Error: Transaction rejected by user");
+        } else {
+          onrefreshSend(result["txhash"])
+        }
+        
+        // onrefreshSend(result["txhash"])
     }
 
     function onrefreshSend(txhash) {
